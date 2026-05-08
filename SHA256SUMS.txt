@@ -1,0 +1,3 @@
+09df813e132d69f9e03a652ef0c14d51fcb30ac79f4ead9d026c5c5c13b9f5bb  dist/malou/spritesheet.webp
+f0bdcc827d5e6f7702daf037bd08d3da47af318d6762d841cce4063adc9fad81  dist/malou/pet.json
+20dd08cc233d905f051c9b44637d579ec91014868f7fccc7510c0b287908b237  assets/contact-sheet.png

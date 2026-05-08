@@ -1,0 +1,122 @@
+{
+  "pet": "malou",
+  "atlas": {
+    "columns": 8,
+    "rows": 9,
+    "cellWidth": 192,
+    "cellHeight": 208
+  },
+  "states": [
+    {
+      "state": "idle",
+      "row": 0,
+      "frames": [
+        "idle/00.png",
+        "idle/01.png",
+        "idle/02.png",
+        "idle/03.png",
+        "idle/04.png",
+        "idle/05.png"
+      ]
+    },
+    {
+      "state": "running-right",
+      "row": 1,
+      "frames": [
+        "running-right/00.png",
+        "running-right/01.png",
+        "running-right/02.png",
+        "running-right/03.png",
+        "running-right/04.png",
+        "running-right/05.png",
+        "running-right/06.png",
+        "running-right/07.png"
+      ]
+    },
+    {
+      "state": "running-left",
+      "row": 2,
+      "frames": [
+        "running-left/00.png",
+        "running-left/01.png",
+        "running-left/02.png",
+        "running-left/03.png",
+        "running-left/04.png",
+        "running-left/05.png",
+        "running-left/06.png",
+        "running-left/07.png"
+      ]
+    },
+    {
+      "state": "waving",
+      "row": 3,
+      "frames": [
+        "waving/00.png",
+        "waving/01.png",
+        "waving/02.png",
+        "waving/03.png"
+      ]
+    },
+    {
+      "state": "jumping",
+      "row": 4,
+      "frames": [
+        "jumping/00.png",
+        "jumping/01.png",
+        "jumping/02.png",
+        "jumping/03.png",
+        "jumping/04.png"
+      ]
+    },
+    {
+      "state": "failed",
+      "row": 5,
+      "frames": [
+        "failed/00.png",
+        "failed/01.png",
+        "failed/02.png",
+        "failed/03.png",
+        "failed/04.png",
+        "failed/05.png",
+        "failed/06.png",
+        "failed/07.png"
+      ]
+    },
+    {
+      "state": "waiting",
+      "row": 6,
+      "frames": [
+        "waiting/00.png",
+        "waiting/01.png",
+        "waiting/02.png",
+        "waiting/03.png",
+        "waiting/04.png",
+        "waiting/05.png"
+      ]
+    },
+    {
+      "state": "running",
+      "row": 7,
+      "frames": [
+        "running/00.png",
+        "running/01.png",
+        "running/02.png",
+        "running/03.png",
+        "running/04.png",
+        "running/05.png"
+      ]
+    },
+    {
+      "state": "review",
+      "row": 8,
+      "frames": [
+        "review/00.png",
+        "review/01.png",
+        "review/02.png",
+        "review/03.png",
+        "review/04.png",
+        "review/05.png"
+      ]
+    }
+  ]
+}

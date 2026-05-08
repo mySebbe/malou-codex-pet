@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security policy
+    url: https://github.com/mySebbe/malou-codex-pet/security/policy
+    about: Read this before sharing sensitive information.

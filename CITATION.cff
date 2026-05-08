@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this pet package as a reference, please cite it as below."
+title: "Malou Codex Pet"
+version: "1.0.0"
+date-released: "2026-05-09"
+authors:
+  - family-names: "mySebbe"
+repository-code: "https://github.com/mySebbe/malou-codex-pet"
+license: "MIT AND CC-BY-NC-4.0"
+abstract: "A custom Codex Desktop pet package for Malou, including a transparent WebP spritesheet, pet manifest, previews, source frames, and sanitized metadata."

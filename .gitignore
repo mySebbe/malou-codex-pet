@@ -1,0 +1,35 @@
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+
+# Secrets and local configuration
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.token
+*secret*
+*password*
+
+# Local Codex state and generated logs
+.codex/
+codex-state*
+*.log
+*.sqlite
+*.db
+
+# Private/raw generation workspace dumps
+pet-runs/
+prompts/
+imagegen-jobs.json
+pet_request.json
+ensure-*-pet-start.*
+
+# Temporary release packaging
+release/
+tmp/

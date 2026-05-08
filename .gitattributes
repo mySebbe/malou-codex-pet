@@ -1,0 +1,13 @@
+*.gitattributes text eol=lf
+*.gitignore text eol=lf
+SHA256SUMS.txt text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.cff text eol=lf
+*.ps1 text eol=crlf
+
+*.png binary
+*.webp binary
+*.mp4 binary
+*.zip binary
