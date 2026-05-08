@@ -1,7 +1,6 @@
 # Malou Codex Pet
 
 [![Release](https://img.shields.io/github/v/release/mySebbe/malou-codex-pet?label=release)](https://github.com/mySebbe/malou-codex-pet/releases/latest)
-[![Validate](https://github.com/mySebbe/malou-codex-pet/actions/workflows/validate.yml/badge.svg)](https://github.com/mySebbe/malou-codex-pet/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-MIT%20%2B%20CC--BY--NC--4.0-blue)](LICENSE.md)
 
 ![Malou contact sheet](assets/contact-sheet.png)
