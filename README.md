@@ -3,6 +3,8 @@
 [![Release](https://img.shields.io/github/v/release/mySebbe/malou-codex-pet?label=release)](https://github.com/mySebbe/malou-codex-pet/releases/latest)
 [![License](https://img.shields.io/badge/license-MIT%20%2B%20CC--BY--NC--4.0-blue)](LICENSE.md)
 
+[Landing page](https://myseb.be/malou-codex-pet/) · [Latest release](https://github.com/mySebbe/malou-codex-pet/releases/latest)
+
 ![Malou contact sheet](assets/contact-sheet.png)
 
 Malou is a custom Codex Desktop pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and `spritesheet.webp`, plus curated source frames and preview media for anyone who wants to inspect the atlas.

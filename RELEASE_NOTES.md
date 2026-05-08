@@ -2,6 +2,8 @@
 
 Initial public release of the Malou custom Codex Desktop pet.
 
+Landing page: https://myseb.be/malou-codex-pet/
+
 ## Highlights
 
 - Installable Codex pet package in `dist/malou/`.
