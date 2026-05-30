@@ -3,7 +3,7 @@
   "pet": {
     "id": "malou",
     "displayName": "Malou",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles."
   },
   "package": {
@@ -85,7 +85,7 @@
   ],
   "checksums": {
     "dist/malou/spritesheet.webp": "89e86f6dabb1d1f4ad838add39d3cf1207c3121db1dede26d2ad23623e2d4375",
-    "dist/malou/pet.json": "7cb80d1f3167cb3acb1f03d72d4025b91516caacd259cfabe3b56efad960f115",
+    "dist/malou/pet.json": "86290b17ac1c2c13f2938db0e37adfbbaf07c7f1ca148f37b7016e3899449fd7",
     "assets/contact-sheet.png": "e7ca96e744cf0b9155ec26b183a6646bd377b41700744873246ee3ac3cd845e6"
   },
   "mobile": {

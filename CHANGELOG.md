@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here.
 
+## [1.1.1] - 2026-05-30
+
+### Fixed
+
+- Added `.gitattributes` so text assets keep stable line endings across Windows checkouts.
+- Updated the public `pet.json` checksum to match the normalized repository file.
+
 ## [1.1.0] - 2026-05-30
 
 ### Changed

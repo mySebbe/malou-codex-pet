@@ -1,6 +1,6 @@
-# Malou Codex Pet v1.1.0
+# Malou Codex Pet v1.1.1
 
-Mobile sync refresh for the Malou custom Codex pet.
+Mobile sync refresh for the Malou custom Codex pet, with stable checkout verification on Windows.
 
 Landing page: https://myseb.be/malou-codex-pet/
 
@@ -10,6 +10,7 @@ Landing page: https://myseb.be/malou-codex-pet/
 - Regenerated the contact sheet, row strips, source frames, and MP4 animation previews.
 - Added install support for selecting Malou as `custom:malou` from PowerShell.
 - Documented how Codex mobile on Android and iOS picks up the selected desktop pet through the connected desktop workspace.
+- Added repository line-ending rules so the checksum verifier remains stable after a fresh Windows checkout.
 - Kept private photos, prompts, logs, Codex state backups, tokens, passwords, and machine-specific paths out of the repository.
 
 ## Install

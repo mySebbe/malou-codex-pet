@@ -96,7 +96,7 @@ Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 202
 | Property | Value |
 | --- | --- |
 | Pet id | `malou` |
-| Version | `1.1.0` |
+| Version | `1.1.1` |
 | Atlas format | WebP, RGBA |
 | Atlas size | `1536 x 1872` |
 | Grid | `8 x 9` |
