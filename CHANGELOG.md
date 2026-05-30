@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented here.
 
+## Unreleased
+
+### Added
+
+- Added `scripts/check-mobile-sync.ps1` to verify and repair the local Codex Desktop state used by Android and iOS pet sync.
+
+### Fixed
+
+- Documented the Android fallback case where `.codex-global-state.json` loses `selected-avatar-id` and needs `custom:malou` restored.
+
 ## [1.1.1] - 2026-05-30
 
 ### Fixed

@@ -61,6 +61,20 @@ Checklist:
 4. Open Codex in the ChatGPT mobile app on iOS or Android with the same account and connected desktop.
 5. Wake the Codex Pet from the mobile Codex UI. On Android, enable chat bubbles in Android settings if the bubble is not shown.
 
+If Android falls back to the default pet after it worked before, check the desktop state that mobile sync uses:
+
+```powershell
+.\scripts\check-mobile-sync.ps1
+```
+
+Repair the local install and selected desktop state with:
+
+```powershell
+.\scripts\check-mobile-sync.ps1 -Repair
+```
+
+The important value is `selected-avatar-id = "custom:malou"` in both `config.toml` and `.codex-global-state.json`. Codex Desktop may rewrite `.codex-global-state.json` during app updates or restarts, so rerun the repair command and restart Codex Desktop if mobile stops showing Malou.
+
 ## Compatibility
 
 Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-05-30.
