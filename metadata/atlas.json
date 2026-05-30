@@ -3,8 +3,8 @@
   "pet": {
     "id": "malou",
     "displayName": "Malou",
-    "version": "1.0.0",
-    "description": "A clean photo-based brown-and-white dog companion turned into a compact Codex-style digital pet."
+    "version": "1.1.0",
+    "description": "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles."
   },
   "package": {
     "manifest": "dist/malou/pet.json",
@@ -13,11 +13,12 @@
     "colorMode": "RGBA",
     "width": 1536,
     "height": 1872,
-    "visiblePixels": 1232429,
-    "visibleColors": 128,
-    "lowAlphaPixels": 0,
-    "visiblePurplePixels": 0,
-    "transparentPurplePixels": 0
+    "visiblePixels": 1423823,
+    "visibleColors": 162817,
+    "lowAlphaPixels": 137912,
+    "visiblePurplePixels": 83,
+    "transparentPurplePixels": 0,
+    "mobileBubbleOptimized": true
   },
   "grid": {
     "columns": 8,
@@ -83,9 +84,21 @@
     }
   ],
   "checksums": {
-    "dist/malou/spritesheet.webp": "09df813e132d69f9e03a652ef0c14d51fcb30ac79f4ead9d026c5c5c13b9f5bb",
-    "dist/malou/pet.json": "f0bdcc827d5e6f7702daf037bd08d3da47af318d6762d841cce4063adc9fad81",
-    "assets/contact-sheet.png": "20dd08cc233d905f051c9b44637d579ec91014868f7fccc7510c0b287908b237"
+    "dist/malou/spritesheet.webp": "89e86f6dabb1d1f4ad838add39d3cf1207c3121db1dede26d2ad23623e2d4375",
+    "dist/malou/pet.json": "7cb80d1f3167cb3acb1f03d72d4025b91516caacd259cfabe3b56efad960f115",
+    "assets/contact-sheet.png": "e7ca96e744cf0b9155ec26b183a6646bd377b41700744873246ee3ac3cd845e6"
+  },
+  "mobile": {
+    "desktopInstallRequired": true,
+    "syncModel": "Install and select Malou on Codex Desktop; Codex mobile for iOS and Android uses the connected desktop workspace, files, project state, and configuration.",
+    "tested": [
+      {
+        "platform": "Android",
+        "device": "Pixel 7 Pro",
+        "chatgptVersion": "1.2026.146",
+        "date": "2026-05-30"
+      }
+    ]
   },
   "privacy": {
     "publicPackageOnly": true,

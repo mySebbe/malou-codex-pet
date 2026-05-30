@@ -7,7 +7,7 @@
 
 ![Malou contact sheet](assets/contact-sheet.png)
 
-Malou is a custom Codex Desktop pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and `spritesheet.webp`, plus curated source frames and preview media for anyone who wants to inspect the atlas.
+Malou is a custom Codex Desktop pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and mobile-bubble-optimized `spritesheet.webp`, plus curated source frames and preview media for anyone who wants to inspect the atlas.
 
 This is not an official OpenAI or Codex asset.
 
@@ -18,7 +18,7 @@ This is not an official OpenAI or Codex asset.
 ```powershell
 git clone https://github.com/mySebbe/malou-codex-pet.git
 cd malou-codex-pet
-.\scripts\install.ps1
+.\scripts\install.ps1 -Select
 ```
 
 Manual install:
@@ -30,7 +30,7 @@ Copy-Item ".\dist\malou\pet.json" $target -Force
 Copy-Item ".\dist\malou\spritesheet.webp" $target -Force
 ```
 
-Then restart Codex Desktop and select `Malou` as the active pet.
+After a manual copy, select `Malou` in Codex Desktop and restart the app. For the scripted install, the `-Select` flag sets `custom:malou` as the active desktop pet and writes the desktop state used by Codex mobile sync.
 
 ### macOS or Linux
 
@@ -42,9 +42,28 @@ cp dist/malou/pet.json "${CODEX_HOME:-$HOME/.codex}/pets/malou/"
 cp dist/malou/spritesheet.webp "${CODEX_HOME:-$HOME/.codex}/pets/malou/"
 ```
 
+Then select `Malou` in Codex Desktop under Settings > Appearance > Pets, or set `selected-avatar-id = "custom:malou"` in your Codex desktop configuration.
+
+## Mobile Sync
+
+There is no separate Android or iOS pet package. Install and select Malou on the desktop machine that ChatGPT mobile connects to, then open Codex in the ChatGPT app on iOS or Android.
+
+OpenAI documents Codex mobile as using the connected desktop workspace files, project state, and configuration:
+
+- Codex for mobile: https://chatgpt.com/codex/mobile/
+- Codex pets: https://developers.openai.com/codex/app/settings#codex-pets
+
+Checklist:
+
+1. Install this package into `${CODEX_HOME:-$HOME/.codex}/pets/malou`.
+2. Select `Malou` in Codex Desktop or run `.\scripts\install.ps1 -Select` on Windows PowerShell.
+3. Restart Codex Desktop and use Settings > Appearance > Pets > Refresh custom pets if Malou is not listed.
+4. Open Codex in the ChatGPT mobile app on iOS or Android with the same account and connected desktop.
+5. Wake the Codex Pet from the mobile Codex UI. On Android, enable chat bubbles in Android settings if the bubble is not shown.
+
 ## Compatibility
 
-Tested as a Codex Desktop custom pet package on 2026-05-09.
+Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-05-30.
 
 ## Previews
 
@@ -65,7 +84,7 @@ Tested as a Codex Desktop custom pet package on 2026-05-09.
 | File | Purpose |
 | --- | --- |
 | `dist/malou/pet.json` | Codex pet manifest |
-| `dist/malou/spritesheet.webp` | Transparent animated pet atlas |
+| `dist/malou/spritesheet.webp` | Transparent animated pet atlas, optimized for desktop and mobile bubbles |
 | `assets/contact-sheet.png` | Visual overview of the atlas |
 | `assets/previews/*.mp4` | Short animation previews by state |
 | `source/frames/` | Curated transparent frame sources |
@@ -77,13 +96,13 @@ Tested as a Codex Desktop custom pet package on 2026-05-09.
 | Property | Value |
 | --- | --- |
 | Pet id | `malou` |
-| Version | `1.0.0` |
+| Version | `1.1.0` |
 | Atlas format | WebP, RGBA |
 | Atlas size | `1536 x 1872` |
 | Grid | `8 x 9` |
 | Cell size | `192 x 208` |
 | Unused cells | Transparent |
-| Main spritesheet SHA-256 | `09df813e132d69f9e03a652ef0c14d51fcb30ac79f4ead9d026c5c5c13b9f5bb` |
+| Main spritesheet SHA-256 | `89e86f6dabb1d1f4ad838add39d3cf1207c3121db1dede26d2ad23623e2d4375` |
 
 ## Animations
 
