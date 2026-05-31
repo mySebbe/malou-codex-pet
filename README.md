@@ -83,7 +83,7 @@ The important value is `selected-avatar-id = "custom:malou"` in both `config.tom
 
 ## Compatibility
 
-Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-05-30.
+Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-05-31, including the after-exit repair path for Codex Desktop restarts.
 
 ## Previews
 

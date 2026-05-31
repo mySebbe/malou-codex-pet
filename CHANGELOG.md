@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+No unreleased changes.
+
+## [1.1.2] - 2026-05-31
+
 ### Added
 
 - Added `scripts/repair-after-codex-exit.ps1` for the case where a running Codex Desktop process keeps rewriting `.codex-global-state.json` back to the default pet.
