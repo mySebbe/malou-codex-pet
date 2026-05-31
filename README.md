@@ -73,6 +73,12 @@ Repair the local install and selected desktop state with:
 .\scripts\check-mobile-sync.ps1 -Repair
 ```
 
+If Codex Desktop is still running and rewrites `.codex-global-state.json` back to the default pet, arm the after-exit repair first, then fully close and reopen Codex Desktop:
+
+```powershell
+.\scripts\repair-after-codex-exit.ps1
+```
+
 The important value is `selected-avatar-id = "custom:malou"` in both `config.toml` and `.codex-global-state.json`. Codex Desktop may rewrite `.codex-global-state.json` during app updates or restarts, so rerun the repair command and restart Codex Desktop if mobile stops showing Malou.
 
 ## Compatibility

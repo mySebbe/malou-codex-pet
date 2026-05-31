@@ -6,6 +6,7 @@ All notable changes to this project are documented here.
 
 ### Added
 
+- Added `scripts/repair-after-codex-exit.ps1` for the case where a running Codex Desktop process keeps rewriting `.codex-global-state.json` back to the default pet.
 - Added `scripts/check-mobile-sync.ps1` to verify and repair the local Codex Desktop state used by Android and iOS pet sync.
 
 ### Fixed
