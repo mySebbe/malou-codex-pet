@@ -3,8 +3,8 @@
     "pet":  {
                 "id":  "malou",
                 "displayName":  "Malou",
-                "version":  "1.2.0",
-                "description":  "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles, with readable status badges for working, waiting, review, and failed states."
+                "version":  "1.3.0",
+                "description":  "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles, with readable status poses and badges for working, waiting, review, and failed states."
             },
     "package":  {
                     "manifest":  "dist/malou/pet.json",
@@ -13,9 +13,9 @@
                     "colorMode":  "RGBA",
                     "width":  1536,
                     "height":  1872,
-                    "visiblePixels":  1436595,
-                    "visibleColors":  159092,
-                    "lowAlphaPixels":  137516,
+                    "visiblePixels":  1438587,
+                    "visibleColors":  157420,
+                    "lowAlphaPixels":  136738,
                     "visiblePurplePixels":  34,
                     "transparentPurplePixels":  0,
                     "mobileBubbleOptimized":  true
@@ -84,9 +84,9 @@
                    }
                ],
     "checksums":  {
-                      "dist/malou/spritesheet.webp":  "e93e3e8c6757965288d54b5e30ae59b624124806453726e2cd4b0bfb633e6283",
-                      "dist/malou/pet.json":  "adf73346efc7ba8e5e04472dd01b2c048172eff9fdaae5fdad1ceffccc31cd35",
-                      "assets/contact-sheet.png":  "bda07c16f71aae05972520efffb88371677071f94fea8f1f64b6326046db18e7"
+                      "dist/malou/spritesheet.webp":  "00a4649e9563cc6ad2d9a58da2f46b9fcc3cda62aa135af3666cb56fb2b0c431",
+                      "dist/malou/pet.json":  "12e19d82a5e96a6f91c1f1a03a8557dc1bfbffa8708a6c66a2afee4f300fe941",
+                      "assets/contact-sheet.png":  "d80270e88213386727e118b1d040b6bdeb679fbffa74c8facbe36b52603f1245"
                   },
     "mobile":  {
                    "desktopInstallRequired":  true,

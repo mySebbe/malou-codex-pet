@@ -1,13 +1,15 @@
-# Malou Codex Pet v1.2.0
+# Malou Codex Pet v1.3.0
 
-Status-readable refresh for the Malou custom Codex pet, with mobile sync repair and stable checkout verification on Windows.
+Status-pose refresh for the Malou custom Codex pet, with mobile sync repair and stable checkout verification on Windows.
 
 Landing page: https://myseb.be/malou-codex-pet/
 
 ## Highlights
 
-- Updated `dist/malou/spritesheet.webp` with status-readable badges for working, waiting for input, review, and failed states.
+- Updated `dist/malou/spritesheet.webp` so Malou's own animation poses communicate failed, waiting for input, working, and review states.
+- Kept the small attached status badges for mobile bubbles where the pet is very small.
 - Regenerated the contact sheet, row strips, source frames, metadata, checksums, and MP4 animation previews.
+- Added `scripts/enhance-animal-status-poses.ps1` to rebuild the body-pose cues before regenerating the atlas.
 - Added install support for selecting Malou as `custom:malou` from PowerShell.
 - Added `scripts/rebuild-status-assets.ps1` to rebuild the status-aware package assets.
 - Added after-exit repair support for Codex Desktop restarts that rewrite `.codex-global-state.json`.
@@ -39,5 +41,5 @@ Restart Codex Desktop, open Codex in the ChatGPT iOS or Android app with the sam
 Main spritesheet SHA-256:
 
 ```text
-497f61dd133e2ba125f83bc219c6eee987f91d340bd4a12e2f09b67b8cca1c9d  dist/malou/spritesheet.webp
+00a4649e9563cc6ad2d9a58da2f46b9fcc3cda62aa135af3666cb56fb2b0c431  dist/malou/spritesheet.webp
 ```

@@ -6,6 +6,13 @@ All notable changes to this project are documented here.
 
 No unreleased changes.
 
+## [1.3.0] - 2026-06-02
+
+### Changed
+
+- Made Malou's own animation poses communicate status without relying only on badges: failed looks sad, waiting raises an asking paw, running shows focused work, and review shows a checking pose.
+- Regenerated the atlas, contact sheet, source frames, row strips, previews, metadata, and package checksums for the new status-pose frames.
+
 ## [1.2.0] - 2026-06-02
 
 ### Changed

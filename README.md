@@ -7,7 +7,7 @@
 
 ![Malou contact sheet](assets/contact-sheet.png)
 
-Malou is a custom Codex Desktop pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and mobile-bubble-optimized `spritesheet.webp`, plus curated source frames and preview media for anyone who wants to inspect the atlas. The working, waiting, review, and failed states include small attached status badges so the mobile bubble reads clearly at a glance.
+Malou is a custom Codex Desktop pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and mobile-bubble-optimized `spritesheet.webp`, plus curated source frames and preview media for anyone who wants to inspect the atlas. The working, waiting, review, and failed states include matching body poses plus small attached status badges so the mobile bubble reads clearly at a glance.
 
 This is not an official OpenAI or Codex asset.
 
@@ -83,7 +83,7 @@ The important value is `selected-avatar-id = "custom:malou"` in both `config.tom
 
 ## Compatibility
 
-Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-06-02, including status-readable working, waiting, review, and failed states plus the after-exit repair path for Codex Desktop restarts.
+Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-06-02, including status-readable working, waiting, review, and failed states with body poses plus the after-exit repair path for Codex Desktop restarts.
 
 ## Previews
 
@@ -116,13 +116,13 @@ Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 202
 | Property | Value |
 | --- | --- |
 | Pet id | `malou` |
-| Version | `1.1.1` |
+| Version | `1.3.0` |
 | Atlas format | WebP, RGBA |
 | Atlas size | `1536 x 1872` |
 | Grid | `8 x 9` |
 | Cell size | `192 x 208` |
 | Unused cells | Transparent |
-| Main spritesheet SHA-256 | `89e86f6dabb1d1f4ad838add39d3cf1207c3121db1dede26d2ad23623e2d4375` |
+| Main spritesheet SHA-256 | `00a4649e9563cc6ad2d9a58da2f46b9fcc3cda62aa135af3666cb56fb2b0c431` |
 
 ## Animations
 

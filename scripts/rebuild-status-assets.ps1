@@ -596,7 +596,7 @@ function Update-MetadataAndChecksums {
         $atlasStats = Get-PngStats -Path $atlasForStats
 
         $metadata.pet.version = $Version
-        $metadata.pet.description = "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles, with readable status badges for working, waiting, review, and failed states."
+        $metadata.pet.description = "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles, with readable status poses and badges for working, waiting, review, and failed states."
         $metadata.package.width = $atlasStats.Width
         $metadata.package.height = $atlasStats.Height
         $metadata.package.visiblePixels = $atlasStats.VisiblePixels
