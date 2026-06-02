@@ -8,8 +8,28 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 $expectedAvatarId = "custom:malou"
-$expectedSpriteHash = "89e86f6dabb1d1f4ad838add39d3cf1207c3121db1dede26d2ad23623e2d4375"
-$expectedPetHash = "86290b17ac1c2c13f2938db0e37adfbbaf07c7f1ca148f37b7016e3899449fd7"
+
+function Get-ExpectedPackageHash {
+    param([Parameter(Mandatory = $true)][string]$RelativePath)
+
+    $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+    $checksumsPath = Join-Path $repoRoot "SHA256SUMS.txt"
+
+    if (-not (Test-Path -LiteralPath $checksumsPath -PathType Leaf)) {
+        throw "Missing SHA256SUMS.txt"
+    }
+
+    foreach ($line in Get-Content -LiteralPath $checksumsPath) {
+        if ($line -match "^([a-f0-9]{64})\s+(.+)$" -and $Matches[2].Trim() -eq $RelativePath) {
+            return $Matches[1]
+        }
+    }
+
+    throw "Missing checksum for $RelativePath"
+}
+
+$expectedSpriteHash = Get-ExpectedPackageHash -RelativePath "dist/malou/spritesheet.webp"
+$expectedPetHash = Get-ExpectedPackageHash -RelativePath "dist/malou/pet.json"
 
 function Get-SelectedAvatarFromConfig {
     param([Parameter(Mandatory = $true)][string]$Path)

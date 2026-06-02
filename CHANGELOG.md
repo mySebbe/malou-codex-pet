@@ -6,6 +6,20 @@ All notable changes to this project are documented here.
 
 No unreleased changes.
 
+## [1.2.0] - 2026-06-02
+
+### Changed
+
+- Made Malou's status states more readable in small Codex mobile bubbles by adding attached visual badges for working, waiting for input, review, and failed states.
+
+### Added
+
+- Added `scripts/rebuild-status-assets.ps1` to regenerate status frames, row strips, atlas, contact sheet, preview videos, metadata, and package checksums.
+
+### Fixed
+
+- Updated `scripts/check-mobile-sync.ps1` to read current package hashes from `SHA256SUMS.txt` instead of hardcoding stale hashes.
+
 ## [1.1.2] - 2026-05-31
 
 ### Added

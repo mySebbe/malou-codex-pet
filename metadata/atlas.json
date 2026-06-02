@@ -1,116 +1,122 @@
-{
-  "schemaVersion": 1,
-  "pet": {
-    "id": "malou",
-    "displayName": "Malou",
-    "version": "1.1.1",
-    "description": "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles."
-  },
-  "package": {
-    "manifest": "dist/malou/pet.json",
-    "spritesheet": "dist/malou/spritesheet.webp",
-    "format": "WEBP",
-    "colorMode": "RGBA",
-    "width": 1536,
-    "height": 1872,
-    "visiblePixels": 1423823,
-    "visibleColors": 162817,
-    "lowAlphaPixels": 137912,
-    "visiblePurplePixels": 83,
-    "transparentPurplePixels": 0,
-    "mobileBubbleOptimized": true
-  },
-  "grid": {
-    "columns": 8,
-    "rows": 9,
-    "cellWidth": 192,
-    "cellHeight": 208,
-    "unusedCells": "transparent"
-  },
-  "states": [
-    {
-      "name": "idle",
-      "row": 0,
-      "frameCount": 6,
-      "preview": "assets/previews/idle.mp4"
-    },
-    {
-      "name": "running-right",
-      "row": 1,
-      "frameCount": 8,
-      "preview": "assets/previews/running-right.mp4"
-    },
-    {
-      "name": "running-left",
-      "row": 2,
-      "frameCount": 8,
-      "preview": "assets/previews/running-left.mp4"
-    },
-    {
-      "name": "waving",
-      "row": 3,
-      "frameCount": 4,
-      "preview": "assets/previews/waving.mp4"
-    },
-    {
-      "name": "jumping",
-      "row": 4,
-      "frameCount": 5,
-      "preview": "assets/previews/jumping.mp4"
-    },
-    {
-      "name": "failed",
-      "row": 5,
-      "frameCount": 8,
-      "preview": "assets/previews/failed.mp4"
-    },
-    {
-      "name": "waiting",
-      "row": 6,
-      "frameCount": 6,
-      "preview": "assets/previews/waiting.mp4"
-    },
-    {
-      "name": "running",
-      "row": 7,
-      "frameCount": 6,
-      "preview": "assets/previews/running.mp4"
-    },
-    {
-      "name": "review",
-      "row": 8,
-      "frameCount": 6,
-      "preview": "assets/previews/review.mp4"
-    }
-  ],
-  "checksums": {
-    "dist/malou/spritesheet.webp": "89e86f6dabb1d1f4ad838add39d3cf1207c3121db1dede26d2ad23623e2d4375",
-    "dist/malou/pet.json": "86290b17ac1c2c13f2938db0e37adfbbaf07c7f1ca148f37b7016e3899449fd7",
-    "assets/contact-sheet.png": "e7ca96e744cf0b9155ec26b183a6646bd377b41700744873246ee3ac3cd845e6"
-  },
-  "mobile": {
-    "desktopInstallRequired": true,
-    "syncModel": "Install and select Malou on Codex Desktop; Codex mobile for iOS and Android uses the connected desktop workspace, files, project state, and configuration.",
-    "tested": [
-      {
-        "platform": "Android",
-        "device": "Pixel 7 Pro",
-        "chatgptVersion": "1.2026.146",
-        "date": "2026-05-30"
-      }
-    ]
-  },
-  "privacy": {
-    "publicPackageOnly": true,
-    "excludedPrivateData": [
-      "original private photo files",
-      "prompt history",
-      "generation job logs",
-      "local Codex state",
-      "local repair scripts",
-      "tokens",
-      "passwords",
-      "machine-specific absolute paths"
-    ]
-  }
+﻿{
+    "schemaVersion":  1,
+    "pet":  {
+                "id":  "malou",
+                "displayName":  "Malou",
+                "version":  "1.2.0",
+                "description":  "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles, with readable status badges for working, waiting, review, and failed states."
+            },
+    "package":  {
+                    "manifest":  "dist/malou/pet.json",
+                    "spritesheet":  "dist/malou/spritesheet.webp",
+                    "format":  "WEBP",
+                    "colorMode":  "RGBA",
+                    "width":  1536,
+                    "height":  1872,
+                    "visiblePixels":  1436595,
+                    "visibleColors":  159092,
+                    "lowAlphaPixels":  137516,
+                    "visiblePurplePixels":  34,
+                    "transparentPurplePixels":  0,
+                    "mobileBubbleOptimized":  true
+                },
+    "grid":  {
+                 "columns":  8,
+                 "rows":  9,
+                 "cellWidth":  192,
+                 "cellHeight":  208,
+                 "unusedCells":  "transparent"
+             },
+    "states":  [
+                   {
+                       "name":  "idle",
+                       "row":  0,
+                       "frameCount":  6,
+                       "preview":  "assets/previews/idle.mp4"
+                   },
+                   {
+                       "name":  "running-right",
+                       "row":  1,
+                       "frameCount":  8,
+                       "preview":  "assets/previews/running-right.mp4"
+                   },
+                   {
+                       "name":  "running-left",
+                       "row":  2,
+                       "frameCount":  8,
+                       "preview":  "assets/previews/running-left.mp4"
+                   },
+                   {
+                       "name":  "waving",
+                       "row":  3,
+                       "frameCount":  4,
+                       "preview":  "assets/previews/waving.mp4"
+                   },
+                   {
+                       "name":  "jumping",
+                       "row":  4,
+                       "frameCount":  5,
+                       "preview":  "assets/previews/jumping.mp4"
+                   },
+                   {
+                       "name":  "failed",
+                       "row":  5,
+                       "frameCount":  8,
+                       "preview":  "assets/previews/failed.mp4"
+                   },
+                   {
+                       "name":  "waiting",
+                       "row":  6,
+                       "frameCount":  6,
+                       "preview":  "assets/previews/waiting.mp4"
+                   },
+                   {
+                       "name":  "running",
+                       "row":  7,
+                       "frameCount":  6,
+                       "preview":  "assets/previews/running.mp4"
+                   },
+                   {
+                       "name":  "review",
+                       "row":  8,
+                       "frameCount":  6,
+                       "preview":  "assets/previews/review.mp4"
+                   }
+               ],
+    "checksums":  {
+                      "dist/malou/spritesheet.webp":  "e93e3e8c6757965288d54b5e30ae59b624124806453726e2cd4b0bfb633e6283",
+                      "dist/malou/pet.json":  "adf73346efc7ba8e5e04472dd01b2c048172eff9fdaae5fdad1ceffccc31cd35",
+                      "assets/contact-sheet.png":  "bda07c16f71aae05972520efffb88371677071f94fea8f1f64b6326046db18e7"
+                  },
+    "mobile":  {
+                   "desktopInstallRequired":  true,
+                   "syncModel":  "Install and select Malou on Codex Desktop; Codex mobile for iOS and Android uses the connected desktop workspace, files, project state, and configuration.",
+                   "tested":  [
+                                  {
+                                      "platform":  "Android",
+                                      "device":  "Pixel 7 Pro",
+                                      "chatgptVersion":  "1.2026.146",
+                                      "date":  "2026-05-30"
+                                  },
+                                  {
+                                      "platform":  "Android",
+                                      "device":  "Pixel 7 Pro",
+                                      "chatgptVersion":  "1.2026.146",
+                                      "date":  "2026-06-02"
+                                  }
+                              ]
+               },
+    "privacy":  {
+                    "publicPackageOnly":  true,
+                    "excludedPrivateData":  [
+                                                "original private photo files",
+                                                "prompt history",
+                                                "generation job logs",
+                                                "local Codex state",
+                                                "local repair scripts",
+                                                "tokens",
+                                                "passwords",
+                                                "machine-specific absolute paths"
+                                            ]
+                }
 }

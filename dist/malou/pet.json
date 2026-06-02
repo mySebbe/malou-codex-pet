@@ -1,6 +1,6 @@
 {
   "id": "malou",
   "displayName": "Malou",
-  "description": "Malou is a clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles.",
+  "description": "Malou is a clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles, with readable status badges for working, waiting, review, and failed states.",
   "spritesheetPath": "spritesheet.webp"
 }

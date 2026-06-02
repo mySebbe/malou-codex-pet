@@ -7,7 +7,7 @@
 
 ![Malou contact sheet](assets/contact-sheet.png)
 
-Malou is a custom Codex Desktop pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and mobile-bubble-optimized `spritesheet.webp`, plus curated source frames and preview media for anyone who wants to inspect the atlas.
+Malou is a custom Codex Desktop pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and mobile-bubble-optimized `spritesheet.webp`, plus curated source frames and preview media for anyone who wants to inspect the atlas. The working, waiting, review, and failed states include small attached status badges so the mobile bubble reads clearly at a glance.
 
 This is not an official OpenAI or Codex asset.
 
@@ -83,7 +83,7 @@ The important value is `selected-avatar-id = "custom:malou"` in both `config.tom
 
 ## Compatibility
 
-Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-05-31, including the after-exit repair path for Codex Desktop restarts.
+Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-06-02, including status-readable working, waiting, review, and failed states plus the after-exit repair path for Codex Desktop restarts.
 
 ## Previews
 
