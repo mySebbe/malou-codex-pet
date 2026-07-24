@@ -106,3 +106,4 @@ if ($Select) {
 }
 
 Write-Host "Restart Codex Desktop, then open Codex in the ChatGPT iOS or Android app."
+Write-Host "ChatGPT Web uses a separate custom-pet upload; upload dist\malou\spritesheet.webp under Settings > Personalization > Pet."

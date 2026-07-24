@@ -7,7 +7,7 @@
 
 ![Malou contact sheet](assets/contact-sheet.png)
 
-Malou is a custom Codex Desktop pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and mobile-bubble-optimized `spritesheet.webp`, plus curated source frames and preview media for anyone who wants to inspect the atlas. The working, waiting, review, and failed states include matching body poses plus small attached status badges so the mobile bubble reads clearly at a glance.
+Malou is a custom v2 pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and transparent `spritesheet.webp` for Codex Desktop and ChatGPT Web, plus curated source frames and preview media for anyone who wants to inspect the atlas. The v2 atlas preserves all nine status animation rows and adds 16 clockwise look directions. Working, waiting, review, and failed states include matching body poses plus small attached status badges so Malou remains readable in compact mobile bubbles.
 
 This is not an official OpenAI or Codex asset.
 
@@ -43,6 +43,19 @@ cp dist/malou/spritesheet.webp "${CODEX_HOME:-$HOME/.codex}/pets/malou/"
 ```
 
 Then select `Malou` in Codex Desktop under Settings > Appearance > Pets, or set `selected-avatar-id = "custom:malou"` in your Codex desktop configuration.
+
+## ChatGPT Web
+
+ChatGPT Web stores uploaded pets separately from Codex Desktop, so installing Malou locally does not automatically add her to the web pet picker.
+
+1. Open ChatGPT Web and go to **Settings > Personalization > Pet > Select pet**.
+2. Choose **Upload pet**.
+3. Enter `Malou` as the name and upload `dist/malou/spritesheet.webp`.
+4. Save the upload, then select Malou in the pet list.
+
+The current ChatGPT Web uploader accepts transparent PNG or WebP atlases in either `1536 x 1872` (v1) or `1536 x 2288` (v2), up to 20 MiB. This repository ships the v2 atlas, including all 16 look directions. The web upload form takes the pet name and description directly; it does not require `pet.json`.
+
+OpenAI pet documentation: https://learn.chatgpt.com/docs/pets
 
 ## Mobile Sync
 
@@ -83,7 +96,7 @@ The important value is `selected-avatar-id = "custom:malou"` in both `config.tom
 
 ## Compatibility
 
-Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 2026-06-02, including status-readable working, waiting, review, and failed states with body poses plus the after-exit repair path for Codex Desktop restarts.
+Validated on 2026-07-25 as a Codex v2 custom pet package with an `8 x 11` atlas, all nine standard animation rows, and 16 clockwise look directions. The standard row poses come from the previously tested Codex Desktop and Android Codex Pet release and passed final v2 visual QA after atlas cleanup; the v2 atlas also matches the current ChatGPT Web upload dimensions.
 
 ## Previews
 
@@ -98,17 +111,19 @@ Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 202
 | `waiting` | [`waiting.mp4`](assets/previews/waiting.mp4) |
 | `running` | [`running.mp4`](assets/previews/running.mp4) |
 | `review` | [`review.mp4`](assets/previews/review.mp4) |
+| 16 look directions | [`look-directions.png`](assets/look-directions.png) |
 
 ## Package
 
 | File | Purpose |
 | --- | --- |
 | `dist/malou/pet.json` | Codex pet manifest |
-| `dist/malou/spritesheet.webp` | Transparent animated pet atlas, optimized for desktop and mobile bubbles |
-| `assets/contact-sheet.png` | Visual overview of the atlas |
+| `dist/malou/spritesheet.webp` | Transparent v2 animated pet atlas for Codex Desktop and ChatGPT Web |
+| `assets/contact-sheet.png` | Visual overview of the complete `8 x 11` atlas |
+| `assets/look-directions.png` | Labeled overview of all 16 clockwise look directions |
 | `assets/previews/*.mp4` | Short animation previews by state |
-| `source/frames/` | Curated transparent frame sources |
-| `source/row-strips/` | Row-level atlas strips |
+| `source/frames/` | Curated transparent standard and look-direction frames |
+| `source/row-strips/` | Standard animation strips plus the two v2 look rows |
 | `metadata/atlas.json` | Public atlas metadata and checksums |
 
 ## Atlas Specs
@@ -116,13 +131,16 @@ Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 202
 | Property | Value |
 | --- | --- |
 | Pet id | `malou` |
-| Version | `1.3.0` |
+| Version | `2.0.0` |
+| Sprite version | `2` |
 | Atlas format | WebP, RGBA |
-| Atlas size | `1536 x 1872` |
-| Grid | `8 x 9` |
+| Atlas size | `1536 x 2288` |
+| Grid | `8 x 11` |
 | Cell size | `192 x 208` |
+| Standard animation rows | `9` |
+| Look directions | `16`, clockwise in 22.5° steps |
 | Unused cells | Transparent |
-| Main spritesheet SHA-256 | `00a4649e9563cc6ad2d9a58da2f46b9fcc3cda62aa135af3666cb56fb2b0c431` |
+| Main spritesheet SHA-256 | `08330293f421dbd864e908ea9c23ece1fc9eb065e6126ac62b55f7602241b6c0` |
 
 ## Animations
 
@@ -137,6 +155,17 @@ Tested as a Codex Desktop custom pet package and Android Codex Pet bubble on 202
 | `waiting` | 6 | 6 |
 | `running` | 7 | 6 |
 | `review` | 8 | 6 |
+
+## Look Directions
+
+The look sequence advances clockwise. `000` means looking up, not a neutral pose.
+
+| Atlas row | Directions |
+| ---: | --- |
+| 9 | `000`, `022.5`, `045`, `067.5`, `090`, `112.5`, `135`, `157.5` |
+| 10 | `180`, `202.5`, `225`, `247.5`, `270`, `292.5`, `315`, `337.5` |
+
+The neutral look frame is standard row 0, column 6. See [`assets/look-directions.png`](assets/look-directions.png) for the labeled QA sheet.
 
 ## Verify
 

@@ -16,6 +16,7 @@ Small fixes are welcome.
 - Do not commit prompt dumps, job logs, local Codex state, or machine-specific paths.
 - Do not commit tokens, passwords, API keys, or private credentials.
 - Keep `dist/malou/pet.json` and `dist/malou/spritesheet.webp` installable together.
+- Preserve the v2 `8 x 11` atlas layout, `spriteVersionNumber: 2`, all nine standard animation rows, and all 16 clockwise look directions.
 - Update `SHA256SUMS.txt`, `metadata/atlas.json`, and `CHANGELOG.md` when changing released assets.
 
 ## Before Opening a Pull Request

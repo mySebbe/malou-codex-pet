@@ -1,23 +1,21 @@
-# Malou Codex Pet v1.3.0
+# Malou Codex Pet v2.0.0
 
-Status-pose refresh for the Malou custom Codex pet, with mobile sync repair and stable checkout verification on Windows.
+V2 looking-direction release for Malou, ready for Codex Desktop and the ChatGPT Web custom-pet uploader.
 
 Landing page: https://myseb.be/malou-codex-pet/
 
 ## Highlights
 
-- Updated `dist/malou/spritesheet.webp` so Malou's own animation poses communicate failed, waiting for input, working, and review states.
-- Kept the small attached status badges for mobile bubbles where the pet is very small.
-- Regenerated the contact sheet, row strips, source frames, metadata, checksums, and MP4 animation previews.
-- Added `scripts/enhance-animal-status-poses.ps1` to rebuild the body-pose cues before regenerating the atlas.
-- Added install support for selecting Malou as `custom:malou` from PowerShell.
-- Added `scripts/rebuild-status-assets.ps1` to rebuild the status-aware package assets.
-- Added after-exit repair support for Codex Desktop restarts that rewrite `.codex-global-state.json`.
-- Documented how Codex mobile on Android and iOS picks up the selected desktop pet through the connected desktop workspace.
-- Added repository line-ending rules so the checksum verifier remains stable after a fresh Windows checkout.
+- Extended the atlas from `8 x 9` to the Codex v2 `8 x 11` layout.
+- Added 16 coherent clockwise look directions in 22.5-degree steps.
+- Preserved the structure and motion of the nine approved standard animation rows and applied the final v2 transparency and chroma cleanup.
+- Added `spriteVersionNumber: 2` to `dist/malou/pet.json`.
+- Added a labeled look-direction sheet, two public look row strips, and 16 individual transparent direction frames.
+- Passed deterministic atlas, chroma-despill, direction semantics, blind-direction, continuity, and independent final visual QA.
+- Documented direct upload to ChatGPT Web, which accepts the `1536 x 2288` v2 atlas.
 - Kept private photos, prompts, logs, Codex state backups, tokens, passwords, and machine-specific paths out of the repository.
 
-## Install
+## Install in Codex Desktop
 
 Download the release ZIP or clone the repository:
 
@@ -34,12 +32,18 @@ For macOS or Linux, copy these files to `${CODEX_HOME:-$HOME/.codex}/pets/malou/
 - `dist/malou/pet.json`
 - `dist/malou/spritesheet.webp`
 
-Restart Codex Desktop, open Codex in the ChatGPT iOS or Android app with the same account, and wake the Codex Pet.
+## Upload to ChatGPT Web
+
+Open **Settings > Personalization > Pet > Select pet**, choose **Upload pet**, enter `Malou`, and upload:
+
+- `dist/malou/spritesheet.webp`
+
+The web form stores its own name and description, so `pet.json` is not uploaded there.
 
 ## Verification
 
 Main spritesheet SHA-256:
 
 ```text
-00a4649e9563cc6ad2d9a58da2f46b9fcc3cda62aa135af3666cb56fb2b0c431  dist/malou/spritesheet.webp
+08330293f421dbd864e908ea9c23ece1fc9eb065e6126ac62b55f7602241b6c0  dist/malou/spritesheet.webp
 ```

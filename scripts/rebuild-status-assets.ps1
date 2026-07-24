@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
-    [string]$Version = "1.2.0",
-    [string]$TestedDate = "2026-06-02",
+    [string]$Version = "2.0.0",
+    [string]$TestedDate = "2026-07-25",
     [switch]$SkipStatusOverlay,
     [switch]$ForceStatusOverlay
 )
@@ -22,12 +22,13 @@ $manifestPath = Join-Path $framesRoot "frames-manifest.json"
 $atlasPngPath = Join-Path $repoRoot "dist\malou\spritesheet.png"
 $atlasWebpPath = Join-Path $distRoot "spritesheet.webp"
 $contactSheetPath = Join-Path $assetsRoot "contact-sheet.png"
+$directionSheetPath = Join-Path $assetsRoot "look-directions.png"
 $shaPath = Join-Path $repoRoot "SHA256SUMS.txt"
 
 $cellWidth = 192
 $cellHeight = 208
 $columns = 8
-$rows = 9
+$rows = 11
 
 function New-Color {
     param([int]$R, [int]$G, [int]$B, [int]$A = 255)
@@ -359,6 +360,36 @@ function Build-RowStripsAndAtlas {
             }
         }
 
+        foreach ($lookRow in @(9, 10)) {
+            $directions = @($manifest.lookDirections | Where-Object { $_.row -eq $lookRow } | Sort-Object column)
+            if ($directions.Count -ne $columns) {
+                throw "Look row $lookRow must contain exactly $columns direction frames."
+            }
+
+            $strip = New-Object System.Drawing.Bitmap ($columns * $cellWidth), $cellHeight, ([System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
+            $stripGraphics = [System.Drawing.Graphics]::FromImage($strip)
+            try {
+                $stripGraphics.Clear([System.Drawing.Color]::Transparent)
+                foreach ($direction in $directions) {
+                    $framePath = Join-Path $framesRoot $direction.frame
+                    $frame = New-BitmapFromFile -Path $framePath
+                    try {
+                        $x = [int]$direction.column * $cellWidth
+                        $y = [int]$direction.row * $cellHeight
+                        $stripGraphics.DrawImageUnscaled($frame, $x, 0)
+                        $atlasGraphics.DrawImageUnscaled($frame, $x, $y)
+                    } finally {
+                        $frame.Dispose()
+                    }
+                }
+
+                Save-Png -Bitmap $strip -Path (Join-Path $rowStripRoot "look-row-$lookRow.png")
+            } finally {
+                $stripGraphics.Dispose()
+                $strip.Dispose()
+            }
+        }
+
         Save-Png -Bitmap $atlas -Path $atlasPngPath
     } finally {
         $atlasGraphics.Dispose()
@@ -421,7 +452,7 @@ function Build-ContactSheet {
     $headerHeight = 22
     $rowHeight = $headerHeight + $thumbHeight
     $sheetWidth = $columns * $thumbWidth
-    $sheetHeight = $manifest.states.Count * $rowHeight
+    $sheetHeight = [int]$manifest.atlas.rows * $rowHeight
 
     $sheet = New-Object System.Drawing.Bitmap $sheetWidth, $sheetHeight, ([System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
     $graphics = [System.Drawing.Graphics]::FromImage($sheet)
@@ -464,6 +495,35 @@ function Build-ContactSheet {
                 }
 
                 $graphics.DrawString([string]$column, $smallFont, $blackBrush, $x + 3, $y + 3)
+            }
+        }
+
+        foreach ($lookRow in @(9, 10)) {
+            $directions = @($manifest.lookDirections | Where-Object { $_.row -eq $lookRow } | Sort-Object column)
+            $rowY = $lookRow * $rowHeight
+            $graphics.FillRectangle($headerBrush, 0, $rowY, $sheetWidth, $headerHeight)
+            $graphics.DrawString(("row {0}: look directions" -f $lookRow), $font, $whiteBrush, 4, $rowY + 4)
+            $graphics.DrawString("8 frames", $font, $whiteBrush, $sheetWidth - 78, $rowY + 4)
+
+            for ($column = 0; $column -lt $columns; $column++) {
+                $x = $column * $thumbWidth
+                $y = $rowY + $headerHeight
+                Draw-Checkerboard -Graphics $graphics -X $x -Y $y -Width $thumbWidth -Height $thumbHeight -Square 12
+
+                $direction = $directions | Where-Object { $_.column -eq $column } | Select-Object -First 1
+                if ($null -ne $direction) {
+                    $framePath = Join-Path $framesRoot $direction.frame
+                    $frame = New-BitmapFromFile -Path $framePath
+                    try {
+                        $graphics.DrawImage($frame, $x, $y, $thumbWidth, $thumbHeight)
+                    } finally {
+                        $frame.Dispose()
+                    }
+                    $graphics.DrawRectangle($greenPen, $x, $y, $thumbWidth - 1, $thumbHeight - 1)
+                    $graphics.DrawString(("{0}°" -f $direction.degrees), $smallFont, $blackBrush, $x + 3, $y + 3)
+                } else {
+                    $graphics.DrawRectangle($redPen, $x, $y, $thumbWidth - 1, $thumbHeight - 1)
+                }
             }
         }
 
@@ -587,6 +647,19 @@ function Update-MetadataAndChecksums {
                     }
                 }
             }
+
+            foreach ($direction in $manifest.lookDirections) {
+                $frame = New-BitmapFromFile -Path (Join-Path $framesRoot $direction.frame)
+                try {
+                    $graphics.DrawImageUnscaled(
+                        $frame,
+                        [int]$direction.column * $cellWidth,
+                        [int]$direction.row * $cellHeight
+                    )
+                } finally {
+                    $frame.Dispose()
+                }
+            }
             Save-Png -Bitmap $atlas -Path $atlasForStats
         } finally {
             $graphics.Dispose()
@@ -596,7 +669,8 @@ function Update-MetadataAndChecksums {
         $atlasStats = Get-PngStats -Path $atlasForStats
 
         $metadata.pet.version = $Version
-        $metadata.pet.description = "A clean photo-based brown-and-white dog companion optimized for Codex Desktop and mobile Codex Pet bubbles, with readable status poses and badges for working, waiting, review, and failed states."
+        $metadata.pet.description = "A clean photo-based brown-and-white dog companion for Codex Desktop, ChatGPT Web, and mobile Codex Pet bubbles, with readable status poses and 16 clockwise look directions."
+        $metadata.package.spriteVersionNumber = 2
         $metadata.package.width = $atlasStats.Width
         $metadata.package.height = $atlasStats.Height
         $metadata.package.visiblePixels = $atlasStats.VisiblePixels
@@ -604,29 +678,17 @@ function Update-MetadataAndChecksums {
         $metadata.package.lowAlphaPixels = $atlasStats.LowAlphaPixels
         $metadata.package.visiblePurplePixels = $atlasStats.VisiblePurplePixels
         $metadata.package.transparentPurplePixels = $atlasStats.TransparentPurplePixels
-
-        $metadata.mobile.tested = @(
-            [pscustomobject]@{
-                platform = "Android"
-                device = "Pixel 7 Pro"
-                chatgptVersion = "1.2026.146"
-                date = "2026-05-30"
-            },
-            [pscustomobject]@{
-                platform = "Android"
-                device = "Pixel 7 Pro"
-                chatgptVersion = "1.2026.146"
-                date = $TestedDate
-            }
-        )
+        $metadata.validation.date = $TestedDate
 
         $spriteHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $atlasWebpPath).Hash.ToLowerInvariant()
         $petHash = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $distRoot "pet.json")).Hash.ToLowerInvariant()
         $contactHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $contactSheetPath).Hash.ToLowerInvariant()
+        $directionHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $directionSheetPath).Hash.ToLowerInvariant()
 
         $metadata.checksums."dist/malou/spritesheet.webp" = $spriteHash
         $metadata.checksums."dist/malou/pet.json" = $petHash
         $metadata.checksums."assets/contact-sheet.png" = $contactHash
+        $metadata.checksums."assets/look-directions.png" = $directionHash
 
         $metadata | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $metadataPath -Encoding utf8
 
@@ -634,6 +696,7 @@ function Update-MetadataAndChecksums {
             "$spriteHash  dist/malou/spritesheet.webp"
             "$petHash  dist/malou/pet.json"
             "$contactHash  assets/contact-sheet.png"
+            "$directionHash  assets/look-directions.png"
         ) | Set-Content -LiteralPath $shaPath -Encoding ascii
     } finally {
         if (Test-Path -LiteralPath $atlasForStats) {

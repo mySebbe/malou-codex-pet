@@ -49,9 +49,33 @@ if ($petJson.spritesheetPath -ne "spritesheet.webp") {
     throw "pet.json spritesheetPath must be 'spritesheet.webp'"
 }
 
+if ($petJson.spriteVersionNumber -ne 2) {
+    throw "pet.json spriteVersionNumber must be 2"
+}
+
 $spritesheetPath = Join-Path $repoRoot "dist\malou\spritesheet.webp"
-if ((Get-Item -LiteralPath $spritesheetPath).Length -le 0) {
+$spritesheet = Get-Item -LiteralPath $spritesheetPath
+if ($spritesheet.Length -le 0) {
     throw "spritesheet.webp is empty"
+}
+
+if ($spritesheet.Length -gt 20MB) {
+    throw "spritesheet.webp exceeds the 20 MiB ChatGPT Web upload limit"
+}
+
+$atlasMetadataPath = Join-Path $repoRoot "metadata\atlas.json"
+$atlasMetadata = Get-Content -LiteralPath $atlasMetadataPath -Raw | ConvertFrom-Json
+
+if ($atlasMetadata.package.width -ne 1536 -or $atlasMetadata.package.height -ne 2288) {
+    throw "metadata atlas size must be 1536 x 2288"
+}
+
+if ($atlasMetadata.grid.columns -ne 8 -or $atlasMetadata.grid.rows -ne 11) {
+    throw "metadata grid must be 8 x 11"
+}
+
+if ($atlasMetadata.lookDirections.Count -ne 16) {
+    throw "metadata must list all 16 look directions"
 }
 
 Write-Host "Malou pet package verified."
