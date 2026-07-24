@@ -105,4 +105,5 @@ if ($Select) {
     Write-Host "To select Malou for Codex Desktop and mobile sync, run: .\scripts\install.ps1 -Select"
 }
 
-Write-Host "Restart Codex Desktop, then open Codex in the ChatGPT iOS or Android app."
+Write-Host "Restart the ChatGPT/Codex desktop app, then open ChatGPT Remote on your phone if desired."
+Write-Host "ChatGPT Web uses a separate custom-pet upload; upload dist\chatgpt-web\malou\spritesheet.png under Settings > Personalization > Pet."

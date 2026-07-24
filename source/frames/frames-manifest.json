@@ -1,8 +1,9 @@
 {
   "pet": "malou",
+  "spriteVersionNumber": 2,
   "atlas": {
     "columns": 8,
-    "rows": 9,
+    "rows": 11,
     "cellWidth": 192,
     "cellHeight": 208
   },
@@ -117,6 +118,108 @@
         "review/04.png",
         "review/05.png"
       ]
+    }
+  ],
+  "neutralLookFrame": {
+    "row": 0,
+    "column": 6
+  },
+  "lookDirections": [
+    {
+      "degrees": 0,
+      "row": 9,
+      "column": 0,
+      "frame": "look-directions/000.png"
+    },
+    {
+      "degrees": 22.5,
+      "row": 9,
+      "column": 1,
+      "frame": "look-directions/022.5.png"
+    },
+    {
+      "degrees": 45,
+      "row": 9,
+      "column": 2,
+      "frame": "look-directions/045.png"
+    },
+    {
+      "degrees": 67.5,
+      "row": 9,
+      "column": 3,
+      "frame": "look-directions/067.5.png"
+    },
+    {
+      "degrees": 90,
+      "row": 9,
+      "column": 4,
+      "frame": "look-directions/090.png"
+    },
+    {
+      "degrees": 112.5,
+      "row": 9,
+      "column": 5,
+      "frame": "look-directions/112.5.png"
+    },
+    {
+      "degrees": 135,
+      "row": 9,
+      "column": 6,
+      "frame": "look-directions/135.png"
+    },
+    {
+      "degrees": 157.5,
+      "row": 9,
+      "column": 7,
+      "frame": "look-directions/157.5.png"
+    },
+    {
+      "degrees": 180,
+      "row": 10,
+      "column": 0,
+      "frame": "look-directions/180.png"
+    },
+    {
+      "degrees": 202.5,
+      "row": 10,
+      "column": 1,
+      "frame": "look-directions/202.5.png"
+    },
+    {
+      "degrees": 225,
+      "row": 10,
+      "column": 2,
+      "frame": "look-directions/225.png"
+    },
+    {
+      "degrees": 247.5,
+      "row": 10,
+      "column": 3,
+      "frame": "look-directions/247.5.png"
+    },
+    {
+      "degrees": 270,
+      "row": 10,
+      "column": 4,
+      "frame": "look-directions/270.png"
+    },
+    {
+      "degrees": 292.5,
+      "row": 10,
+      "column": 5,
+      "frame": "look-directions/292.5.png"
+    },
+    {
+      "degrees": 315,
+      "row": 10,
+      "column": 6,
+      "frame": "look-directions/315.png"
+    },
+    {
+      "degrees": 337.5,
+      "row": 10,
+      "column": 7,
+      "frame": "look-directions/337.5.png"
     }
   ]
 }

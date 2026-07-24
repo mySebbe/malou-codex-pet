@@ -6,11 +6,11 @@
 
 The public repository contains only curated derived pet assets:
 
-- transparent Codex pet spritesheet
+- transparent desktop and ChatGPT Web pet spritesheets
 - pet manifest
 - source frames and row strips
 - preview media
-- sanitized metadata
+- sanitized package, adoption, and release metadata
 
 The private source photo, prompt history, generation logs, local repair scripts, and Codex state files are not included.
 

@@ -6,6 +6,29 @@ All notable changes to this project are documented here.
 
 No unreleased changes.
 
+## [2.0.0] - 2026-07-25
+
+### Added
+
+- Added 16 clockwise look directions in 22.5-degree steps across atlas rows 9 and 10.
+- Added labeled look-direction QA artwork plus public direction row strips and individual transparent direction frames.
+- Added a separately verified ChatGPT Web v2 atlas, direct adoption link, upload instructions, and square sharing card.
+- Added reproducible web-asset and GitHub-release packaging helpers plus versioned desktop, web, showcase, and checksum release downloads.
+
+### Changed
+
+- Upgraded `dist/malou/spritesheet.webp` from the `8 x 9` v1 layout to the `8 x 11` v2 layout.
+- Added `spriteVersionNumber: 2` to the pet manifest.
+- Updated the contact sheet, public metadata, checksums, release notes, citation metadata, and verification checks.
+- Preserved the approved structure and motion of all nine standard animation rows while applying the final v2 transparency and chroma cleanup.
+- Kept the Codex Desktop neutral-look cell in the desktop package while making the corresponding cell transparent in the ChatGPT Web compatibility variant.
+- Updated README, release notes, citation, attribution, contribution guidance, security support, issue templates, install output, metadata, and current OpenAI Pets and Remote links for v2.
+
+### Validated
+
+- Passed deterministic v2 atlas, chroma-despill, direction semantics, blind-direction, continuity, and independent final visual QA.
+- Successfully uploaded, selected, shared, and reopened Malou through the public ChatGPT Web adoption page.
+
 ## [1.3.0] - 2026-06-02
 
 ### Changed
