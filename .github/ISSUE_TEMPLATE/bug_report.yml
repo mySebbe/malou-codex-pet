@@ -11,6 +11,7 @@ body:
       options:
         - Install
         - Spritesheet
+        - ChatGPT Web upload or adoption link
         - Preview media
         - Metadata
         - Documentation

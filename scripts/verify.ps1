@@ -60,7 +60,7 @@ if ($spritesheet.Length -le 0) {
 }
 
 if ($spritesheet.Length -gt 20MB) {
-    throw "spritesheet.webp exceeds the 20 MiB ChatGPT Web upload limit"
+    throw "Desktop spritesheet.webp exceeds the 20 MiB release guard"
 }
 
 $webSpritesheetPath = Join-Path $repoRoot "dist\chatgpt-web\malou\spritesheet.png"
@@ -113,6 +113,13 @@ Assert-PngDimensions -Path (Join-Path $repoRoot "assets\malou-look-directions-sh
 
 $atlasMetadataPath = Join-Path $repoRoot "metadata\atlas.json"
 $atlasMetadata = Get-Content -LiteralPath $atlasMetadataPath -Raw | ConvertFrom-Json
+$version = [string]$atlasMetadata.pet.version
+$releaseDate = [string]$atlasMetadata.release.date
+$releaseTag = "v$version"
+
+if ($version -notmatch "^\d+\.\d+\.\d+$") {
+    throw "metadata pet version must be semantic: $version"
+}
 
 if ($atlasMetadata.package.width -ne 1536 -or $atlasMetadata.package.height -ne 2288) {
     throw "metadata atlas size must be 1536 x 2288"
@@ -132,6 +139,76 @@ if ($atlasMetadata.chatgptWeb.spritesheet -ne "dist/chatgpt-web/malou/spriteshee
 
 if (-not $atlasMetadata.chatgptWeb.uploadVerified -or -not $atlasMetadata.chatgptWeb.shareUrlVerified) {
     throw "metadata must record the verified ChatGPT Web upload and share link"
+}
+
+if ($atlasMetadata.release.tag -ne $releaseTag) {
+    throw "metadata release tag must be $releaseTag"
+}
+
+if ($atlasMetadata.release.url -ne "https://github.com/mySebbe/malou-codex-pet/releases/tag/$releaseTag") {
+    throw "metadata release URL does not match $releaseTag"
+}
+
+$expectedReleaseAssets = @{
+    desktopPackage = "malou-codex-pet-$releaseTag.zip"
+    chatgptWebAtlas = "malou-chatgpt-web-$releaseTag.png"
+    lookDirectionsCard = "malou-look-directions-$releaseTag.png"
+    checksums = "malou-$releaseTag-SHA256SUMS.txt"
+}
+foreach ($property in $expectedReleaseAssets.Keys) {
+    if ($atlasMetadata.release.assets.$property -ne $expectedReleaseAssets[$property]) {
+        throw "metadata release asset $property must be $($expectedReleaseAssets[$property])"
+    }
+}
+
+$documentationChecks = @(
+    @{
+        Path = "README.md"
+        Pattern = "\| Version \| ``$([regex]::Escape($version))`` \|"
+        Message = "README version table"
+    },
+    @{
+        Path = "CHANGELOG.md"
+        Pattern = "## \[$([regex]::Escape($version))\] - $([regex]::Escape($releaseDate))"
+        Message = "changelog release heading"
+    },
+    @{
+        Path = "RELEASE_NOTES.md"
+        Pattern = "# Malou Codex Pet $([regex]::Escape($releaseTag))"
+        Message = "release-notes heading"
+    },
+    @{
+        Path = "CITATION.cff"
+        Pattern = "(?m)^version: ""$([regex]::Escape($version))""$"
+        Message = "citation version"
+    },
+    @{
+        Path = "CITATION.cff"
+        Pattern = "(?m)^date-released: ""$([regex]::Escape($releaseDate))""$"
+        Message = "citation release date"
+    },
+    @{
+        Path = "scripts\install.ps1"
+        Pattern = "dist\\chatgpt-web\\malou\\spritesheet\.png"
+        Message = "ChatGPT Web install guidance"
+    }
+)
+foreach ($check in $documentationChecks) {
+    $content = Get-Content -LiteralPath (Join-Path $repoRoot $check.Path) -Raw
+    if ($content -notmatch $check.Pattern) {
+        throw "Missing or stale $($check.Message) in $($check.Path)"
+    }
+}
+
+foreach ($jsonFile in Get-ChildItem -LiteralPath $repoRoot -Recurse -File -Filter "*.json") {
+    if ($jsonFile.FullName -like "*\.git\*" -or $jsonFile.FullName -like "*\release\*") {
+        continue
+    }
+    try {
+        Get-Content -LiteralPath $jsonFile.FullName -Raw | ConvertFrom-Json | Out-Null
+    } catch {
+        throw "Invalid JSON file: $($jsonFile.FullName)"
+    }
 }
 
 Write-Host "Malou pet package verified."

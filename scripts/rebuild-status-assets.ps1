@@ -21,8 +21,11 @@ $metadataPath = Join-Path $repoRoot "metadata\atlas.json"
 $manifestPath = Join-Path $framesRoot "frames-manifest.json"
 $atlasPngPath = Join-Path $repoRoot "dist\malou\spritesheet.png"
 $atlasWebpPath = Join-Path $distRoot "spritesheet.webp"
+$webAtlasPath = Join-Path $repoRoot "dist\chatgpt-web\malou\spritesheet.png"
 $contactSheetPath = Join-Path $assetsRoot "contact-sheet.png"
 $directionSheetPath = Join-Path $assetsRoot "look-directions.png"
+$shareCardPath = Join-Path $assetsRoot "malou-look-directions-share.png"
+$buildWebAssetsPath = Join-Path $PSScriptRoot "build-web-assets.py"
 $shaPath = Join-Path $repoRoot "SHA256SUMS.txt"
 
 $cellWidth = 192
@@ -625,6 +628,30 @@ function Get-PngStats {
     }
 }
 
+function Build-WebAssets {
+    $pythonPath = $null
+    if (-not [string]::IsNullOrWhiteSpace($env:MALOU_PYTHON)) {
+        $pythonPath = $env:MALOU_PYTHON
+    } else {
+        $pythonCommand = Get-Command python -ErrorAction SilentlyContinue
+        if ($null -eq $pythonCommand) {
+            $pythonCommand = Get-Command python3 -ErrorAction SilentlyContinue
+        }
+        if ($null -ne $pythonCommand) {
+            $pythonPath = $pythonCommand.Source
+        }
+    }
+
+    if ([string]::IsNullOrWhiteSpace($pythonPath)) {
+        throw "Python with Pillow is required to rebuild the ChatGPT Web and sharing assets. Set MALOU_PYTHON to the executable path."
+    }
+
+    & $pythonPath $buildWebAssetsPath
+    if ($LASTEXITCODE -ne 0) {
+        throw "Failed to rebuild ChatGPT Web and sharing assets."
+    }
+}
+
 function Update-MetadataAndChecksums {
     $metadata = Get-Content -LiteralPath $metadataPath -Raw | ConvertFrom-Json
     $stats = Get-PngStats -Path $contactSheetPath
@@ -681,22 +708,28 @@ function Update-MetadataAndChecksums {
         $metadata.validation.date = $TestedDate
 
         $spriteHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $atlasWebpPath).Hash.ToLowerInvariant()
+        $webHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $webAtlasPath).Hash.ToLowerInvariant()
         $petHash = (Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $distRoot "pet.json")).Hash.ToLowerInvariant()
         $contactHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $contactSheetPath).Hash.ToLowerInvariant()
         $directionHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $directionSheetPath).Hash.ToLowerInvariant()
+        $shareHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $shareCardPath).Hash.ToLowerInvariant()
 
         $metadata.checksums."dist/malou/spritesheet.webp" = $spriteHash
+        $metadata.checksums."dist/chatgpt-web/malou/spritesheet.png" = $webHash
         $metadata.checksums."dist/malou/pet.json" = $petHash
         $metadata.checksums."assets/contact-sheet.png" = $contactHash
         $metadata.checksums."assets/look-directions.png" = $directionHash
+        $metadata.checksums."assets/malou-look-directions-share.png" = $shareHash
 
         $metadata | ConvertTo-Json -Depth 100 | Set-Content -LiteralPath $metadataPath -Encoding utf8
 
         @(
             "$spriteHash  dist/malou/spritesheet.webp"
+            "$webHash  dist/chatgpt-web/malou/spritesheet.png"
             "$petHash  dist/malou/pet.json"
             "$contactHash  assets/contact-sheet.png"
             "$directionHash  assets/look-directions.png"
+            "$shareHash  assets/malou-look-directions-share.png"
         ) | Set-Content -LiteralPath $shaPath -Encoding ascii
     } finally {
         if (Test-Path -LiteralPath $atlasForStats) {
@@ -712,6 +745,7 @@ Normalize-FramePngs
 Build-RowStripsAndAtlas
 Build-ContactSheet
 Build-Previews
+Build-WebAssets
 Update-MetadataAndChecksums
 
 Write-Host "Rebuilt Malou status assets for version $Version."

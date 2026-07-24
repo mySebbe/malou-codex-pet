@@ -7,4 +7,4 @@ authors:
   - family-names: "mySebbe"
 repository-code: "https://github.com/mySebbe/malou-codex-pet"
 license: "MIT AND CC-BY-NC-4.0"
-abstract: "A custom Codex v2 pet package for Malou, including a transparent WebP atlas for Codex Desktop and ChatGPT Web, 16 look directions, a pet manifest, previews, source frames, and sanitized metadata."
+abstract: "A custom Codex v2 pet package for Malou, including a transparent WebP atlas for the desktop app, a separately verified PNG atlas for ChatGPT Web, 16 look directions, a pet manifest, previews, source frames, and sanitized metadata."

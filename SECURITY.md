@@ -4,7 +4,8 @@
 
 | Version | Supported |
 | --- | --- |
-| `1.x` | Yes |
+| `2.x` | Yes |
+| `1.x` | No |
 
 ## Reporting
 
@@ -19,7 +20,8 @@ Do not post secrets, tokens, passwords, private photos, private prompt logs, or 
 The release package is intended to contain only:
 
 - `pet.json`
-- `spritesheet.webp`
+- the desktop `spritesheet.webp`
+- the ChatGPT Web `spritesheet.png`
 - public preview assets
 - sanitized metadata and documentation
 

@@ -208,14 +208,28 @@
     "v2UploadDimensions": "1536 x 2288",
     "maximumUploadBytes": 20971520,
     "neutralCellPolicy": "Row 0, column 6 is transparent for current ChatGPT Web upload compatibility.",
+    "officialDocumentation": "https://learn.chatgpt.com/docs/pets",
+    "officialDocumentationUploadDimensionsAsOfCheck": "1536 x 1872",
+    "verifiedV2UploadDimensions": "1536 x 2288",
     "uploaderRequirementsChecked": "2026-07-25",
     "uploadVerified": true,
     "shareUrlVerified": true,
     "shareUrl": "https://chatgpt.com/s/sharepet_6a63ebbf4b448191bc9b6fb597429a15"
   },
+  "release": {
+    "tag": "v2.0.0",
+    "date": "2026-07-25",
+    "url": "https://github.com/mySebbe/malou-codex-pet/releases/tag/v2.0.0",
+    "assets": {
+      "desktopPackage": "malou-codex-pet-v2.0.0.zip",
+      "chatgptWebAtlas": "malou-chatgpt-web-v2.0.0.png",
+      "lookDirectionsCard": "malou-look-directions-v2.0.0.png",
+      "checksums": "malou-v2.0.0-SHA256SUMS.txt"
+    }
+  },
   "mobile": {
     "desktopInstallRequired": true,
-    "syncModel": "Install and select Malou on Codex Desktop; Codex mobile for iOS and Android uses the connected desktop workspace, files, project state, and configuration.",
+    "syncModel": "Install and select Malou in the desktop app, then use ChatGPT Remote on iOS or Android with the same account and connected desktop; there is no separate mobile pet archive.",
     "tested": [
       {
         "platform": "Android",

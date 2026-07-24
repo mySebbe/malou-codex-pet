@@ -13,6 +13,7 @@ No unreleased changes.
 - Added 16 clockwise look directions in 22.5-degree steps across atlas rows 9 and 10.
 - Added labeled look-direction QA artwork plus public direction row strips and individual transparent direction frames.
 - Added a separately verified ChatGPT Web v2 atlas, direct adoption link, upload instructions, and square sharing card.
+- Added reproducible web-asset and GitHub-release packaging helpers plus versioned desktop, web, showcase, and checksum release downloads.
 
 ### Changed
 
@@ -21,6 +22,7 @@ No unreleased changes.
 - Updated the contact sheet, public metadata, checksums, release notes, citation metadata, and verification checks.
 - Preserved the approved structure and motion of all nine standard animation rows while applying the final v2 transparency and chroma cleanup.
 - Kept the Codex Desktop neutral-look cell in the desktop package while making the corresponding cell transparent in the ChatGPT Web compatibility variant.
+- Updated README, release notes, citation, attribution, contribution guidance, security support, issue templates, install output, metadata, and current OpenAI Pets and Remote links for v2.
 
 ### Validated
 

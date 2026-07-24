@@ -11,9 +11,20 @@ Malou is a custom v2 pet based on a brown-and-white dog companion. The package c
 
 This is not an official OpenAI or Codex asset.
 
+## Release Downloads
+
+The [v2.0.0 release](https://github.com/mySebbe/malou-codex-pet/releases/tag/v2.0.0) provides four ready-to-use assets:
+
+- [`malou-codex-pet-v2.0.0.zip`](https://github.com/mySebbe/malou-codex-pet/releases/download/v2.0.0/malou-codex-pet-v2.0.0.zip) — desktop package containing the `malou` pet folder
+- [`malou-chatgpt-web-v2.0.0.png`](https://github.com/mySebbe/malou-codex-pet/releases/download/v2.0.0/malou-chatgpt-web-v2.0.0.png) — direct ChatGPT Web upload
+- [`malou-look-directions-v2.0.0.png`](https://github.com/mySebbe/malou-codex-pet/releases/download/v2.0.0/malou-look-directions-v2.0.0.png) — shareable 16-direction showcase
+- [`malou-v2.0.0-SHA256SUMS.txt`](https://github.com/mySebbe/malou-codex-pet/releases/download/v2.0.0/malou-v2.0.0-SHA256SUMS.txt) — release-asset checksums
+
 ## Install
 
 ### Windows PowerShell
+
+Either download and extract `malou-codex-pet-v2.0.0.zip`, then copy its `malou` folder to `%USERPROFILE%\.codex\pets\`, or install from a clone:
 
 ```powershell
 git clone https://github.com/mySebbe/malou-codex-pet.git
@@ -50,31 +61,29 @@ ChatGPT Web stores uploaded pets separately from Codex Desktop, so installing Ma
 
 1. Open ChatGPT Web and go to **Settings > Personalization > Pet > Select pet**.
 2. Choose **Upload pet**.
-3. Enter `Malou` as the name and upload `dist/chatgpt-web/malou/spritesheet.png`.
+3. Enter `Malou` as the name and upload `malou-chatgpt-web-v2.0.0.png` from the release, or `dist/chatgpt-web/malou/spritesheet.png` from a repository checkout.
 4. Save the upload, then select Malou in the pet list.
 
-The current ChatGPT Web uploader accepts transparent PNG or WebP atlases in either `1536 x 1872` (v1) or `1536 x 2288` (v2), up to 20 MiB. The verified web atlas includes all 16 look directions and differs from the desktop package in one compatibility detail: row 0, column 6 is transparent because the current web upload path rejects Malou's desktop atlas when that desktop-only neutral cell is populated. Codex Desktop uses `dist/malou/spritesheet.webp`, which includes its explicit neutral-look cell. The web upload form takes the pet name and description directly; it does not require `pet.json`.
+The live ChatGPT Web uploader accepted this transparent `1536 x 2288` v2 PNG on 2026-07-25, including all 16 look directions. The current [public OpenAI Pets documentation](https://learn.chatgpt.com/docs/pets) still lists the v1 `1536 x 1872` upload size, so this repository records the tested v2 behavior separately. The web variant also keeps row 0, column 6 transparent because the live upload path rejected Malou's desktop atlas when that desktop-only neutral cell was populated. The desktop package uses `dist/malou/spritesheet.webp`, which includes its explicit neutral-look cell. The web form takes the pet name and description directly; it does not require `pet.json`.
 
 The public adoption page is [chatgpt.com/s/sharepet_6a63ebbf4b448191bc9b6fb597429a15](https://chatgpt.com/s/sharepet_6a63ebbf4b448191bc9b6fb597429a15).
 
-OpenAI pet documentation: https://learn.chatgpt.com/docs/pets
-
 ## Mobile Sync
 
-There is no separate Android or iOS pet package. Install and select Malou on the desktop machine that ChatGPT mobile connects to, then open Codex in the ChatGPT app on iOS or Android.
+There is no separate Android or iOS pet package. Install and select Malou on the desktop machine that ChatGPT Remote connects to, then open the remote session on iOS or Android.
 
-OpenAI documents Codex mobile as using the connected desktop workspace files, project state, and configuration:
+Current OpenAI references:
 
-- Codex for mobile: https://chatgpt.com/codex/mobile/
-- Codex pets: https://developers.openai.com/codex/app/settings#codex-pets
+- ChatGPT Remote: https://chatgpt.com/remote/
+- Pets: https://learn.chatgpt.com/docs/pets
 
 Checklist:
 
 1. Install this package into `${CODEX_HOME:-$HOME/.codex}/pets/malou`.
 2. Select `Malou` in Codex Desktop or run `.\scripts\install.ps1 -Select` on Windows PowerShell.
 3. Restart Codex Desktop and use Settings > Appearance > Pets > Refresh custom pets if Malou is not listed.
-4. Open Codex in the ChatGPT mobile app on iOS or Android with the same account and connected desktop.
-5. Wake the Codex Pet from the mobile Codex UI. On Android, enable chat bubbles in Android settings if the bubble is not shown.
+4. Open ChatGPT Remote on iOS or Android with the same account and connected desktop.
+5. Wake or select the Pet from the supported desktop or remote interface.
 
 If Android falls back to the default pet after it worked before, check the desktop state that mobile sync uses:
 
@@ -129,6 +138,7 @@ Validated on 2026-07-25 as a Codex v2 custom pet package with an `8 x 11` atlas,
 | `source/frames/` | Curated transparent standard and look-direction frames |
 | `source/row-strips/` | Standard animation strips plus the two v2 look rows |
 | `metadata/atlas.json` | Public atlas metadata and checksums |
+| `scripts/package-release.ps1` | Builds the four versioned GitHub release assets |
 
 ## Atlas Specs
 
@@ -176,9 +186,10 @@ The Codex Desktop neutral look frame is standard row 0, column 6. The ChatGPT We
 
 ```powershell
 .\scripts\verify.ps1
+.\scripts\package-release.ps1 -Version 2.0.0
 ```
 
-Expected core checksums are listed in `SHA256SUMS.txt`.
+Expected repository checksums are listed in `SHA256SUMS.txt`; the packaging script creates a separate checksum file for GitHub release downloads.
 
 ## Privacy
 
