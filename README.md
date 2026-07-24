@@ -3,11 +3,11 @@
 [![Release](https://img.shields.io/github/v/release/mySebbe/malou-codex-pet?label=release)](https://github.com/mySebbe/malou-codex-pet/releases/latest)
 [![License](https://img.shields.io/badge/license-MIT%20%2B%20CC--BY--NC--4.0-blue)](LICENSE.md)
 
-[Landing page](https://myseb.be/malou-codex-pet/) · [Latest release](https://github.com/mySebbe/malou-codex-pet/releases/latest)
+[Landing page](https://myseb.be/malou-codex-pet/) · [Latest release](https://github.com/mySebbe/malou-codex-pet/releases/latest) · [Adopt Malou in ChatGPT](https://chatgpt.com/s/sharepet_6a63ebbf4b448191bc9b6fb597429a15)
 
 ![Malou contact sheet](assets/contact-sheet.png)
 
-Malou is a custom v2 pet based on a brown-and-white dog companion. The package contains the ready-to-install `pet.json` and transparent `spritesheet.webp` for Codex Desktop and ChatGPT Web, plus curated source frames and preview media for anyone who wants to inspect the atlas. The v2 atlas preserves all nine status animation rows and adds 16 clockwise look directions. Working, waiting, review, and failed states include matching body poses plus small attached status badges so Malou remains readable in compact mobile bubbles.
+Malou is a custom v2 pet based on a brown-and-white dog companion. The package contains the ready-to-install Codex Desktop files plus a separately verified ChatGPT Web atlas, curated source frames, and preview media for anyone who wants to inspect the animation. Both v2 variants preserve all nine status animation rows and add 16 clockwise look directions. Working, waiting, review, and failed states include matching body poses plus small attached status badges so Malou remains readable in compact mobile bubbles.
 
 This is not an official OpenAI or Codex asset.
 
@@ -50,10 +50,12 @@ ChatGPT Web stores uploaded pets separately from Codex Desktop, so installing Ma
 
 1. Open ChatGPT Web and go to **Settings > Personalization > Pet > Select pet**.
 2. Choose **Upload pet**.
-3. Enter `Malou` as the name and upload `dist/malou/spritesheet.webp`.
+3. Enter `Malou` as the name and upload `dist/chatgpt-web/malou/spritesheet.png`.
 4. Save the upload, then select Malou in the pet list.
 
-The current ChatGPT Web uploader accepts transparent PNG or WebP atlases in either `1536 x 1872` (v1) or `1536 x 2288` (v2), up to 20 MiB. This repository ships the v2 atlas, including all 16 look directions. The web upload form takes the pet name and description directly; it does not require `pet.json`.
+The current ChatGPT Web uploader accepts transparent PNG or WebP atlases in either `1536 x 1872` (v1) or `1536 x 2288` (v2), up to 20 MiB. The verified web atlas includes all 16 look directions and differs from the desktop package in one compatibility detail: row 0, column 6 is transparent because the current web upload path rejects Malou's desktop atlas when that desktop-only neutral cell is populated. Codex Desktop uses `dist/malou/spritesheet.webp`, which includes its explicit neutral-look cell. The web upload form takes the pet name and description directly; it does not require `pet.json`.
+
+The public adoption page is [chatgpt.com/s/sharepet_6a63ebbf4b448191bc9b6fb597429a15](https://chatgpt.com/s/sharepet_6a63ebbf4b448191bc9b6fb597429a15).
 
 OpenAI pet documentation: https://learn.chatgpt.com/docs/pets
 
@@ -96,7 +98,7 @@ The important value is `selected-avatar-id = "custom:malou"` in both `config.tom
 
 ## Compatibility
 
-Validated on 2026-07-25 as a Codex v2 custom pet package with an `8 x 11` atlas, all nine standard animation rows, and 16 clockwise look directions. The standard row poses come from the previously tested Codex Desktop and Android Codex Pet release and passed final v2 visual QA after atlas cleanup; the v2 atlas also matches the current ChatGPT Web upload dimensions.
+Validated on 2026-07-25 as a Codex v2 custom pet package with an `8 x 11` atlas, all nine standard animation rows, and 16 clockwise look directions. The standard row poses come from the previously tested Codex Desktop and Android Codex Pet release and passed final v2 visual QA after atlas cleanup. The separate ChatGPT Web PNG was successfully uploaded, selected, shared, and opened through its public adoption link on the same date.
 
 ## Previews
 
@@ -118,9 +120,11 @@ Validated on 2026-07-25 as a Codex v2 custom pet package with an `8 x 11` atlas,
 | File | Purpose |
 | --- | --- |
 | `dist/malou/pet.json` | Codex pet manifest |
-| `dist/malou/spritesheet.webp` | Transparent v2 animated pet atlas for Codex Desktop and ChatGPT Web |
+| `dist/malou/spritesheet.webp` | Transparent v2 animated pet atlas for Codex Desktop |
+| `dist/chatgpt-web/malou/spritesheet.png` | Verified transparent v2 atlas for direct ChatGPT Web upload |
 | `assets/contact-sheet.png` | Visual overview of the complete `8 x 11` atlas |
 | `assets/look-directions.png` | Labeled overview of all 16 clockwise look directions |
+| `assets/malou-look-directions-share.png` | Square social card showing the 16 look directions |
 | `assets/previews/*.mp4` | Short animation previews by state |
 | `source/frames/` | Curated transparent standard and look-direction frames |
 | `source/row-strips/` | Standard animation strips plus the two v2 look rows |
@@ -141,6 +145,7 @@ Validated on 2026-07-25 as a Codex v2 custom pet package with an `8 x 11` atlas,
 | Look directions | `16`, clockwise in 22.5° steps |
 | Unused cells | Transparent |
 | Main spritesheet SHA-256 | `08330293f421dbd864e908ea9c23ece1fc9eb065e6126ac62b55f7602241b6c0` |
+| ChatGPT Web atlas SHA-256 | `10bf406875a69e17ec75e5b65b3f66510d3ac0ee47c41001be07b6fe201d512c` |
 
 ## Animations
 
@@ -165,7 +170,7 @@ The look sequence advances clockwise. `000` means looking up, not a neutral pose
 | 9 | `000`, `022.5`, `045`, `067.5`, `090`, `112.5`, `135`, `157.5` |
 | 10 | `180`, `202.5`, `225`, `247.5`, `270`, `292.5`, `315`, `337.5` |
 
-The neutral look frame is standard row 0, column 6. See [`assets/look-directions.png`](assets/look-directions.png) for the labeled QA sheet.
+The Codex Desktop neutral look frame is standard row 0, column 6. The ChatGPT Web upload variant intentionally leaves that desktop-only cell transparent. See [`assets/look-directions.png`](assets/look-directions.png) for the labeled QA sheet.
 
 ## Verify
 

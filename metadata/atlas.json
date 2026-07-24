@@ -91,7 +91,8 @@
   ],
   "neutralLookFrame": {
     "row": 0,
-    "column": 6
+    "column": 6,
+    "scope": "Codex Desktop"
   },
   "lookDirections": [
     {
@@ -193,17 +194,24 @@
   ],
   "checksums": {
     "dist/malou/spritesheet.webp": "08330293f421dbd864e908ea9c23ece1fc9eb065e6126ac62b55f7602241b6c0",
+    "dist/chatgpt-web/malou/spritesheet.png": "10bf406875a69e17ec75e5b65b3f66510d3ac0ee47c41001be07b6fe201d512c",
     "dist/malou/pet.json": "099e31785a6bd7074fbffc901a912acc97bd1125f51bb1d9e663f9ab699689ca",
     "assets/contact-sheet.png": "f14caa6cad576b84b9dcd9d7db2a80ec64621a699f482dac9a0ba9b9c84a592b",
-    "assets/look-directions.png": "8c5a34927c07c209fdd433eed2d1ad5bcdd674134b22e34e12f39d57db93761d"
+    "assets/look-directions.png": "8c5a34927c07c209fdd433eed2d1ad5bcdd674134b22e34e12f39d57db93761d",
+    "assets/malou-look-directions-share.png": "6efa2e2f3666ca5d242a70aaf8f41bb5173e8ffe3fc13b2b6da22ddbc3b86b97"
   },
   "chatgptWeb": {
     "directUpload": true,
-    "spritesheet": "dist/malou/spritesheet.webp",
+    "spritesheet": "dist/chatgpt-web/malou/spritesheet.png",
+    "format": "PNG",
     "petJsonRequired": false,
     "v2UploadDimensions": "1536 x 2288",
     "maximumUploadBytes": 20971520,
-    "uploaderRequirementsChecked": "2026-07-25"
+    "neutralCellPolicy": "Row 0, column 6 is transparent for current ChatGPT Web upload compatibility.",
+    "uploaderRequirementsChecked": "2026-07-25",
+    "uploadVerified": true,
+    "shareUrlVerified": true,
+    "shareUrl": "https://chatgpt.com/s/sharepet_6a63ebbf4b448191bc9b6fb597429a15"
   },
   "mobile": {
     "desktopInstallRequired": true,
